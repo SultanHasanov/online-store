@@ -1,38 +1,76 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 100vh;
+}
+
+.content {
+  flex-grow: 1;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  padding-bottom: 60px;
 }
 
-.App-link {
-  color: #61dafb;
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  justify-content: center;
+  padding: 10px;
+  width: 100%;
+  max-width: 1200px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.card-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-controls button {
+  font-size: 12px; /* Меньший размер шрифта для кнопок */
+}
+
+.fixed-icons {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding: 10px 0;
+  border-top: 1px solid #f0f0f0;
+}
+
+.icon-link {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+.cart-total {
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+/* Медиа-запрос для экранов 600px и меньше */
+@media (max-width: 600px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr); /* Три карточки в ряду */
   }
-  to {
-    transform: rotate(360deg);
+
+  .card-controls {
+  }
+
+  .card-controls button {
+    font-size: 15px; /* Меньший размер шрифта для кнопок на маленьких экранах */
+    padding: 6px; /* Уменьшаем отступы */
+  }
+
+  .fixed-icons {
+    font-size: 18px;
   }
 }
