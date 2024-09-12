@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { notification, Button } from "antd";
+import "antd/dist/reset.css"; // Импорт стилей Ant Design
 
 const InstallPrompt = () => {
   const [installPrompt, setInstallPrompt] = useState(null);
@@ -23,9 +25,17 @@ const InstallPrompt = () => {
       installPrompt.prompt(); // Показать диалог установки
       installPrompt.userChoice.then((choiceResult) => {
         if (choiceResult.outcome === "accepted") {
-          console.log("Пользователь установил приложение");
+          notification.success({
+            message: "Установка завершена",
+            description: "Приложение успешно установлено на ваш рабочий стол.",
+            placement: "topRight", // Появление в верхнем правом углу
+          });
         } else {
-          console.log("Пользователь отменил установку");
+          notification.info({
+            message: "Установка отменена",
+            description: "Пользователь отменил установку приложения.",
+            placement: "topRight",
+          });
         }
         setInstallPrompt(null); // Сбросить сохраненное событие
       });
@@ -35,9 +45,13 @@ const InstallPrompt = () => {
   return (
     <>
       {isInstallable && (
-        <button onClick={handleInstallClick} className="install-button">
+        <Button
+          onClick={handleInstallClick}
+          className="install-button"
+          type="primary"
+        >
           Установить приложение
-        </button>
+        </Button>
       )}
     </>
   );
