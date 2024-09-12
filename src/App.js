@@ -17,6 +17,7 @@ import Home from "./pages/Home";
 import Orders from "./pages/Orders";
 import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
+import InstallPrompt from "./InstallPrompt";
 
 const App = () => {
   const [totalPrice, setTotalPrice] = useState(0);
@@ -35,6 +36,7 @@ const App = () => {
   return (
     <Router>
       <div className="app-container">
+        <InstallPrompt />
         <div className="content">
           <Routes>
             <Route
