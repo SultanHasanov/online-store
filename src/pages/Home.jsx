@@ -27,6 +27,11 @@ const Home = ({ addToCart, cartItems, setCartItems }) => {
       newCartItems[productId].count -= 1;
       setCartItems(newCartItems);
       addToCart(-newCartItems[productId].price);
+    } else {
+      // Удаляем товар из корзины, если его количество стало 0
+      const { [productId]: removedItem, ...remainingItems } = newCartItems;
+      setCartItems(remainingItems);
+      addToCart(-removedItem.price * removedItem.count);
     }
   };
 

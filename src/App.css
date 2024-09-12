@@ -91,14 +91,16 @@
 .app-container {
   display: flex;
   flex-direction: column;
+  
   height: 100vh; /* Устанавливаем высоту контейнера на всю высоту окна просмотра */
 }
 
 /* Контентный блок */
 .content {
-  flex: 1; /* Позволяет контенту занимать всё доступное пространство */
-  padding: 20px;
-  overflow-y: auto; /* Добавляет скролл при необходимости */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }
 
 /* Фиксированные иконки */
@@ -133,8 +135,8 @@
 /* Сумма в корзине */
 .cart-total {
   width: max-content;
-  font-size: 12px; /* Размер шрифта для суммы в корзине */
+  font-size: 16px; /* Размер шрифта для суммы в корзине */
   color: green; /* Цвет для суммы в корзине */
    position: absolute; 
-   top: -10px;
+   top: -14px;
 }

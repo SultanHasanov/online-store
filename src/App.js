@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Orders from "./pages/Orders";
@@ -11,12 +11,18 @@ const App = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [cartItems, setCartItems] = useState({});
 
+  useEffect(() => {
+    // Очищаем кеш при монтировании компонента
+    localStorage.removeItem("cartItems");
+  }, []);
+
   const addToCart = (price) => {
     setTotalPrice((prevPrice) => prevPrice + price);
   };
 
   const handleCartUpdate = (newCartItems) => {
     setCartItems(newCartItems);
+    localStorage.setItem("cartItems", JSON.stringify(newCartItems));
   };
 
   return (
