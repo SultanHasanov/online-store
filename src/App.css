@@ -24,6 +24,7 @@
 
 .card-controls {
   display: flex;
+  justify-content: center;
   justify-content: space-between;
   align-items: center;
 }
@@ -61,10 +62,11 @@
   .product-grid {
     grid-template-columns: repeat(3, 1fr); /* Три карточки в ряду */
   }
-
-  .card-controls {
-  }
-
+.ant-card .ant-card-head{
+  min-height: 20px;
+  padding: 0 5px;
+}
+ 
   .card-controls button {
     font-size: 15px; /* Меньший размер шрифта для кнопок на маленьких экранах */
     padding: 6px; /* Уменьшаем отступы */
@@ -72,5 +74,15 @@
 
   .fixed-icons {
     font-size: 18px;
+  }
+
+  .ant-btn{
+    padding: 11px;
+  } 
+  .ant-menu .ant-menu-item .ant-menu-item-icon +span{
+    font-size: 8px;
+  }
+  .ant-layout-footer{
+    width: 100%;
   }
 }

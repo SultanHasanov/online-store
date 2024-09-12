@@ -38,10 +38,11 @@ const Home = ({ addToCart, cartItems, setCartItems }) => {
           title={product.name}
           extra={<span>{product.image}</span>}
           style={{
+            height: "200px",
             width: "100%",
-            maxWidth: "150px",
+            maxWidth: "130px",
           }} /* Уменьшаем максимальную ширину карточек */
-          bodyStyle={{ padding: "10px" }}
+          bodyStyle={{ padding: "5px" }}
         >
           <p>Цена: {product.price} ₽</p>
           <p>
