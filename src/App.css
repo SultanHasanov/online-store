@@ -1,16 +1,4 @@
-.app-container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
 
-.content {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 60px;
-}
 
 .product-grid {
   display: grid;
@@ -33,29 +21,7 @@
   font-size: 12px; /* Меньший размер шрифта для кнопок */
 }
 
-.fixed-icons {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  background-color: white;
-  padding: 10px 0;
-  border-top: 1px solid #f0f0f0;
-}
 
-.icon-link {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-}
-
-.cart-total {
-  margin-left: 5px;
-  font-weight: bold;
-}
 
 /* Медиа-запрос для экранов 600px и меньше */
 @media (max-width: 600px) {
@@ -85,4 +51,90 @@
   .ant-layout-footer{
     width: 100%;
   }
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Обеспечиваем, что контейнер занимает всю высоту экрана */
+}
+
+.content {
+  flex: 1; /* Содержимое занимает все пространство между панелью и нижней панелью */
+}
+
+.fixed-icons {
+  position: fixed;
+  bottom: 0;
+  left: 0; /* Обеспечиваем, что панель начинается с левого края */
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background-color: #fff;
+  padding: 10px 0;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Обеспечиваем, что панель будет поверх остальных элементов */
+}
+
+.icon-link {
+  font-size: 24px;
+  color: #000;
+  text-decoration: none; /* Убираем подчеркивание у ссылок */
+}
+
+.cart-total {
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+/* Общие стили для контейнера */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Устанавливаем высоту контейнера на всю высоту окна просмотра */
+}
+
+/* Контентный блок */
+.content {
+  flex: 1; /* Позволяет контенту занимать всё доступное пространство */
+  padding: 20px;
+  overflow-y: auto; /* Добавляет скролл при необходимости */
+}
+
+/* Фиксированные иконки */
+.fixed-icons {
+  position: fixed; /* Фиксируем элемент относительно окна просмотра */
+  bottom: 0; /* Размещаем элемент внизу окна просмотра */
+  left: 0; /* Размещаем элемент слева */
+  width: 100%; /* Устанавливаем ширину элемента на всю ширину окна */
+  display: flex; /* Используем flexbox для выравнивания иконок */
+  justify-content: space-around; /* Равномерное распределение иконок по горизонтали */
+  background-color: #fff; /* Белый фон для видимости */
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Тень для визуального разделения */
+  padding: 10px 0; /* Внутренние отступы для отступа иконок */
+  z-index: 1000; /* Устанавливаем уровень наложения, чтобы элемент был поверх других */
+  
+}
+
+/* Ссылка для иконок */
+.icon-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #000; /* Цвет иконок */
+  text-decoration: none; /* Убираем подчеркивание у ссылок */
+   position: relative;
+}
+
+.icon-link:hover {
+  color: #1890ff; /* Цвет иконок при наведении */
+}
+
+/* Сумма в корзине */
+.cart-total {
+  width: max-content;
+  font-size: 12px; /* Размер шрифта для суммы в корзине */
+  color: green; /* Цвет для суммы в корзине */
+   position: absolute; 
+   top: -10px;
 }
