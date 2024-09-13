@@ -140,3 +140,23 @@
    position: absolute; 
    top: -14px;
 }
+
+.ant-card .ant-card-extra{
+  font-size: 26px;
+}
+
+.card-controls-btn{
+  display: flex;
+  justify-content: center;
+
+  button{
+    color: blue;
+    border-color: blue;
+  }
+}
+
+.product-grid{
+  p{
+    font-size: 12px;
+  }
+}

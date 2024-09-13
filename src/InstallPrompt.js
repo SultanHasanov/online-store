@@ -4,13 +4,16 @@ import "antd/dist/reset.css"; // Импорт стилей Ant Design
 
 const InstallPrompt = () => {
   const [installPrompt, setInstallPrompt] = useState(null);
-  const [isInstallable, setIsInstallable] = useState(false);
+  const [isInstallable, setIsInstallable] = useState(
+    localStorage.getItem("isInstallable") === "true"
+  );
 
   useEffect(() => {
     const handler = (e) => {
       e.preventDefault(); // Предотвратить показ стандартного диалога
       setInstallPrompt(e); // Сохранить событие
       setIsInstallable(true); // Показать кнопку для установки
+      localStorage.setItem("isInstallable", "true");
     };
 
     window.addEventListener("beforeinstallprompt", handler);
@@ -28,7 +31,7 @@ const InstallPrompt = () => {
           notification.success({
             message: "Установка завершена",
             description: "Приложение успешно установлено на ваш рабочий стол.",
-            placement: "topRight", // Появление в верхнем правом углу
+            placement: "topRight",
           });
         } else {
           notification.info({
@@ -38,6 +41,7 @@ const InstallPrompt = () => {
           });
         }
         setInstallPrompt(null); // Сбросить сохраненное событие
+        localStorage.removeItem("isInstallable");
       });
     }
   };

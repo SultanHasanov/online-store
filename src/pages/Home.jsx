@@ -1,8 +1,27 @@
-import React from "react";
-import { Card, Button } from "antd";
-import { products } from "../products";
+import React, { useEffect, useState } from "react";
+import { Card, Button, Spin } from "antd";
 
 const Home = ({ addToCart, cartItems, setCartItems }) => {
+  const [products, setProducts] = useState([]);
+
+  
+
+  
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch(
+          "https://ed6f97a297b5b5de.mokky.dev/items"
+        );
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.error("Ошибка при загрузке продуктов:", error);
+      }
+    };
+    fetchProducts();
+  }, []); // Оставляем пустой массив зависимостей для запроса данных один раз
+
   const handleAddToCart = (product) => {
     const newCartItems = { ...cartItems };
     if (newCartItems[product.id]) {
@@ -37,33 +56,41 @@ const Home = ({ addToCart, cartItems, setCartItems }) => {
 
   return (
     <div className="product-grid">
-      {products.map((product) => (
-        <Card
-          key={product.id}
-          title={product.name}
-          extra={<span>{product.image}</span>}
-          style={{
-            height: "200px",
-            width: "100%",
-            maxWidth: "130px",
-          }} /* Уменьшаем максимальную ширину карточек */
-          bodyStyle={{ padding: "5px" }}
-        >
-          <p>Цена: {product.price} ₽</p>
-          <p>
-            <s>Старая цена: {product.oldPrice} ₽</s>
-          </p>
-          {cartItems[product.id] ? (
-            <div className="card-controls">
-              <Button onClick={() => handleDecrement(product.id)}>➖</Button>
-              <span>{cartItems[product.id].count}</span>
-              <Button onClick={() => handleIncrement(product.id)}>➕</Button>
-            </div>
-          ) : (
-            <Button onClick={() => handleAddToCart(product)}>В корзину</Button>
-          )}
-        </Card>
-      ))}
+      {products.length === 0 ? (
+        <Spin size="SpinSize" />
+      ) : (
+        products.map((product) => (
+          <Card
+            key={product.id}
+            title={product.name}
+            extra={<span>{product.image}</span>}
+            style={{
+              height: "max-content",
+              width: "100%",
+              maxWidth: "130px",
+            }}
+            bodyStyle={{ padding: "5px" }}
+          >
+            <p>Цена: {product.price} ₽</p>
+            <p>
+              <s>Старая цена: {product.oldPrice} ₽</s>
+            </p>
+            {cartItems[product.id] ? (
+              <div className="card-controls">
+                <Button onClick={() => handleDecrement(product.id)}>➖</Button>
+                <span>{cartItems[product.id].count}</span>
+                <Button onClick={() => handleIncrement(product.id)}>➕</Button>
+              </div>
+            ) : (
+              <div className="card-controls-btn">
+                <Button onClick={() => handleAddToCart(product)}>
+                  В корзину
+                </Button>
+              </div>
+            )}
+          </Card>
+        ))
+      )}
     </div>
   );
 };

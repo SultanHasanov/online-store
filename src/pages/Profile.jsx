@@ -1,7 +1,13 @@
 import React from "react";
+import InstallPrompt from "../InstallPrompt";
 
 const Profile = () => {
-  return <h2>Мой профиль</h2>;
+  return (
+    <div>
+      <h2>Мой профиль</h2>
+      <InstallPrompt />
+    </div>
+  );
 };
 
 export default Profile;

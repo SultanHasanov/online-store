@@ -6,7 +6,7 @@ import {
   UserOutlined,
   ProfileOutlined,
 } from "@ant-design/icons";
-import "./App.css";
+import "./App.scss";
 
 const Layout = ({ children, totalPrice }) => {
   return (
